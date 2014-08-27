@@ -1,6 +1,7 @@
-var broccoli = require('broccoli');
+var path = require('path'),
+    broccoli = require('broccoli');
 
-module.exports = function(tree) {
+module.exports = function(projectDir, tree) {
     var watched = [],
         duplicates = [];
 
@@ -14,15 +15,15 @@ module.exports = function(tree) {
             }
         });
 
-    function willReadStringTree(path) {
-        watched.push(path);
+    function willReadStringTree(tree) {
+        watched.push(tree);
     }
 
     function findDuplicates() {
         watched.sort();
         watched.forEach(function(parent) {
             watched.forEach(function(child) {
-                if (child.indexOf(parent + '/') === 0) {
+                if (normalize(projectDir, child).indexOf(normalize(projectDir, parent) + '/') === 0) {
                     duplicates.push({
                         parent: parent,
                         child: child
@@ -32,3 +33,13 @@ module.exports = function(tree) {
         });
     }
 };
+
+function normalize(projectDir, tree) {
+    tree = path.relative(projectDir, tree);
+    if (tree === '') {
+        tree = '.';
+    } else {
+        tree = './' + tree;
+    }
+    return tree;
+}

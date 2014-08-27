@@ -5,7 +5,8 @@ var path = require('path'),
     colors = require('colors'),
     find = require('../');
 
-var brocfilePath = path.join(process.cwd(), 'Brocfile.js');
+var projectDir = process.cwd(),
+    brocfilePath = path.join(projectDir, 'Brocfile.js');
 
 if (!fs.existsSync(brocfilePath)) {
     console.log(colors.red('You need to cd into a directory that contains a Brocfile.js'));
@@ -14,14 +15,14 @@ if (!fs.existsSync(brocfilePath)) {
 
 var tree = require(brocfilePath);
 
-find(tree)
+find(projectDir, tree)
     .then(function(result) {
         var watched = result.watched,
             duplicates = result.duplicates;
         if (watched.length > 0) {
             console.log('All watched trees:');
-            watched.forEach(function(path) {
-                console.log('  - ' + path);
+            watched.forEach(function(tree) {
+                console.log('  - ' + tree);
             });
         } else {
             console.log('Your Broccoli tree is not watching any trees.');
