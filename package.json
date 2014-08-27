@@ -1,10 +1,10 @@
 {
   "name": "broccoli-duplicate-watched-tree-finder",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "A utility to find duplicated watched Broccoli trees.",
   "main": "index.js",
   "bin": {
-      "broccoli-duplicate-watched-tree-finder": "bin/finder.js"
+    "broccoli-duplicate-watched-tree-finder": "bin/finder.js"
   },
   "repository": {
     "type": "git",
