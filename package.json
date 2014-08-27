@@ -1,0 +1,23 @@
+{
+  "name": "broccoli-duplicate-watched-tree-finder",
+  "version": "0.0.0",
+  "description": "A utility to find duplicated watched Broccoli trees.",
+  "main": "index.js",
+  "bin": {
+      "broccoli-duplicate-watched-tree-finder": "bin/finder.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sebastianseilund/broccoli-duplicate-watched-tree-finder.git"
+  },
+  "author": "Sebastian Seilund",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sebastianseilund/broccoli-duplicate-watched-tree-finder/issues"
+  },
+  "homepage": "https://github.com/sebastianseilund/broccoli-duplicate-watched-tree-finder",
+  "dependencies": {
+    "broccoli": "^0.12.3",
+    "colors": "^0.6.2"
+  }
+}
